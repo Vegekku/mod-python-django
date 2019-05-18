@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from posts.views import latest_posts, post_detail
+from posts.views import latest_posts, post_detail, create_post
 from users.views import login, logout
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('login', login, name='login'),
     path('logout', logout, name='logout'),
     # Posts
+    path('posts/new', create_post, name='create_post'),
     path('posts/<int:pk>', post_detail, name='post_detail'),
     path('', latest_posts, name='latest_posts'),
 ]

@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# IDEs (add your IDE config if it is not)
+.idea/
+

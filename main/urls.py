@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from posts.views import latest_posts
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', latest_posts, name='latest_posts')
 ]

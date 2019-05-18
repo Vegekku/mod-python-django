@@ -6,14 +6,14 @@
 - &#9744;En `/blogs` mostrar un listado de blogs de usuarios de la plataforma.
 - &#9744;En `/blogs/<username>` mostrar blog del usuario con todos los posts del usuario ordenados por el más actual.
 - &#9744;En `/blogs/<username>/<post_id>` mostrar detalle del post.
-- &#9744;`Post` está compuesto por:
+- &#9745;`Post` está compuesto por:
   - title
   - intro
   - body
   - media (opcional)
   - publish_datetime
   - categories (1 o más)
-- &#9744;`Category` gestionadas por administrador.
+- &#9745;`Category` gestionadas por administrador.
 - &#9744;Mismo diseño de posts en home/blog mostrando title, media (si tiene) e intro.
 - &#9744;En `/new-post` un formulario para crear un post. Acceden usuarios autenticados. Identificar usuario para publicar POST en su blog.
 - &#9744;En `/login` el usuario hará login.

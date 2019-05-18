@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %}Wordplease{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Wordplease</h1>
+        <nav>
+            <a href="{% url 'latest_posts' %}">Home</a>
+        </nav>
+    </header>
+    <main>
+        {% block body_main %}{% endblock %}
+    </main>
+    <footer>
+        Wordplease &copy; {% now 'Y' %}. Any rights reserved.
+    </footer>
+</body>
+</html>

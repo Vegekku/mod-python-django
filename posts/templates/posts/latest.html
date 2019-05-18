@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>WordBlog</title>
-</head>
-<body>
-    <h1>WordBlog</h1>
-    <hr>
+{% extends 'base.html' %}
+
+{% block body_main %}
     {% for post in latest_posts %}
-        <div>
-            <h2>{{ post.title }}</h2>
-            <img src="{{ post.media }}" alt="{{ post.intro }}" title="{{ post.title }}">
-            <p>{{ post.intro }}</p>
-        </div>
+        <a href="{% url 'post_detail' post.pk %}">
+            <div>
+                <h2>{{ post.title }}</h2>
+                <img src="{{ post.media }}" alt="{{ post.intro }}" title="{{ post.title }}">
+                <p>{{ post.intro }}</p>
+            </div>
+        </a>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ post.title }}{% endblock %}
+
+{% block body_main %}
+    {% for post in latest_posts %}
+        <div>
+            <h2>{{ post.title }}</h2>
+            <img src="{{ post.media }}" alt="{{ post.intro }}" title="{{ post.title }}">
+            <p>{{ post.intro }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

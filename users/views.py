@@ -7,7 +7,7 @@ from users.forms import LoginForm
 
 def login(request):
     if request.user.is_authenticated:
-        redirect('latest_posts')
+        redirect('home')
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -19,7 +19,7 @@ def login(request):
                 messages.error(request, 'Invalid credentials')
             else:
                 django_login(request, user)
-                return redirect('latest_posts')
+                return redirect('home')
     else:
         form = LoginForm()
 
@@ -29,4 +29,4 @@ def login(request):
 
 def logout(request):
     django_logout(request)
-    return redirect('latest_posts')
+    return redirect('home')

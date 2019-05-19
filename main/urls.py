@@ -19,13 +19,20 @@ from django.urls import path
 from posts.views import latest_posts, post_detail, create_post
 from users.views import login, logout
 
+api_path = 'api/v1'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Users
     path('login', login, name='login'),
     path('logout', logout, name='logout'),
+    #path('signup', signup, name='signup'),
+    # Blogs
+    #path('blogs/<int:pk>', post_detail, name='post_detail'),
+    path('blogs/<str:username>/<int:pk>', post_detail, name='post_detail'),
+    #path('blogs/<str:username>', list_posts, name='user_blog'),
+    #path('blogs', list_blogs, name='list_blogs'),
     # Posts
-    path('posts/new', create_post, name='create_post'),
-    path('posts/<int:pk>', post_detail, name='post_detail'),
-    path('', latest_posts, name='latest_posts'),
+    path('new-post', create_post, name='create_post'),
+    path('', latest_posts, name='home'),
 ]

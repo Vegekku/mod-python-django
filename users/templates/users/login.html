@@ -6,7 +6,7 @@
     {% for message in messages %}
         <p>{{ message }}</p>
     {% endfor %}
-    <form action="post">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>

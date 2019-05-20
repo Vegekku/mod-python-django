@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
@@ -26,9 +27,12 @@ def post_detail(request, username, pk):
     return HttpResponse(html)
 
 
+@login_required
 def create_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        post = Post()
+        post.author = request.user
+        form = PostForm(request.POST, instance=post)
         if form.is_valid():
             new_post = form.save()
             messages.success(request, 'Post created successfully with ID {0}'.format(new_post.pk))

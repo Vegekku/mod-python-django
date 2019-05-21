@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 
 from categories.models import Category
@@ -17,6 +18,7 @@ class Post(models.Model):
     modification_date = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Category)
     author = models.ForeignKey(get_user_model(), related_name='posts', on_delete=models.CASCADE)
+    # author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

@@ -5,7 +5,7 @@
 - &#9745;Home con listado de últimos post publicados por usurios.
 - &#9744;En `/blogs` mostrar un listado de blogs de usuarios de la plataforma.
 - &#9744;En `/blogs/<username>` mostrar blog del usuario con todos los posts del usuario ordenados por el más actual.
-- &#9744;En `/blogs/<username>/<post_id>` mostrar detalle del post.
+- &#9745;En `/blogs/<username>/<post_id>` mostrar detalle del post.
 - &#9745;`Post` está compuesto por:
   - title
   - intro

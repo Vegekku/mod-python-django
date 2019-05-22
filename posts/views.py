@@ -1,10 +1,8 @@
 from datetime import datetime
 
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views import View
@@ -16,21 +14,15 @@ from posts.models import Post
 class LatestPostsView(View):
 
     def get(self, request, username=None):
-    #def get(self, request):
-        # menor a la fecha actual
-        # username = None
-        # if username is not None:
-        # user = User.objects.get(username=username)
-        # posts = user.get('posts').objects.all()
-        # queryset = queryset.filter(Q(visibility=Photo.PUBLIC) | Q(owner=self.request.user))
-        # posts = Post.objects.filter(Q(publish_date__lte=datetime.now) & Q(author=user)).order_by('-publish_date')
-        #    posts = Post.objects.all().filter(publish_date__lte=datetime.now).order_by('-publish_date')
-        # else:
-        #    posts = Post.objects.all().filter(publish_date__lte=datetime.now).order_by('-publish_date')
+        if username is not None:
+            author = get_object_or_404(User, username=username)
+            posts = author.posts.all()
+            # another way without 404 page
+            # posts = Post.objects.filter(author__username=username)
+        else:
+            posts = Post.objects.all()
 
-        posts = Post.objects.all().order_by('-publish_date')
-
-        context = {'latest_posts': posts}
+        context = {'latest_posts': posts.filter(publish_date__lte=datetime.now()).order_by('-publish_date')}
 
         html = render(request, 'posts/latest.html', context)
 
@@ -39,8 +31,7 @@ class LatestPostsView(View):
 
 class PostDetailView(View):
     def get(self, request, username, pk):
-    #def get(self, request, pk):
-        post = get_object_or_404(Post, pk=pk)
+        post = get_object_or_404(Post, pk=pk, publish_date__lte=datetime.now(), author__username=username)
 
         context = {'post': post}
 

@@ -3,8 +3,8 @@
 ## Web site
 
 - &#9745;Home con listado de últimos post publicados por usurios.
-- &#9744;En `/blogs` mostrar un listado de blogs de usuarios de la plataforma.
-- &#9744;En `/blogs/<username>` mostrar blog del usuario con todos los posts del usuario ordenados por el más actual.
+- &#9745;En `/blogs` mostrar un listado de blogs de usuarios de la plataforma.
+- &#9745;En `/blogs/<username>` mostrar blog del usuario con todos los posts del usuario ordenados por el más actual.
 - &#9745;En `/blogs/<username>/<post_id>` mostrar detalle del post.
 - &#9745;`Post` está compuesto por:
   - title
@@ -18,7 +18,7 @@
 - &#9745;En `/new-post` un formulario para crear un post. Acceden usuarios autenticados. Identificar usuario para publicar POST en su blog.
 - &#9745;En `/login` el usuario hará login.
 - &#9745;En `/logout` el usuario hará logout.
-- &#9744;En `/signup` el usuario se registra con:
+- &#9745;En `/signup` el usuario se registra con:
   - name
   - surname
   - username

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from posts.views import LatestPostsView, PostDetailView, CreatePostView
-from users.views import LoginView, LogoutView
+from users.views import LoginView, LogoutView, SignUpView, ListView
 
 api_path = 'api/v1'
 
@@ -26,13 +26,11 @@ urlpatterns = [
     # Users
     path('login', LoginView.as_view(), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
-    #path('signup', signup, name='signup'),
+    path('signup', SignUpView.as_view(), name='signup'),
     # Blogs
-    #path('blogs/<int:pk>', post_detail, name='post_detail'),
     path('blogs/<str:username>/<int:pk>', PostDetailView.as_view(), name='post_detail'),
-    #path('blogs/<int:pk>', PostDetailView.as_view(), name='post_detail'),
     path('blogs/<str:username>', LatestPostsView.as_view(), name='user_blog'),
-    #path('blogs', list_blogs, name='list_blogs'),
+    path('blogs', ListView.as_view(), name='list_blogs'),
     # Posts
     path('new-post', CreatePostView.as_view(), name='create_post'),
     path('', LatestPostsView.as_view(), name='home'),

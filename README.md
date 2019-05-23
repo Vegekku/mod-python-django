@@ -2,9 +2,13 @@
 
 ## CHANGELOG
 
-## FUTURE FEATURES
+### 1.0
 
 - Optimize database queries.
+
+## FUTURE FEATURES
+
+- Change to Model Views
 - List posts depend on url parameters (latest, oldest, list)
 - Refactor categories as an internal model of posts, if it's possible.
 - Manage environment variables with .env file: https://github.com/joke2k/django-environ

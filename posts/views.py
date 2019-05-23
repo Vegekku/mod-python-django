@@ -20,7 +20,7 @@ class LatestPostsView(View):
             # another way without 404 page
             # posts = Post.objects.filter(author__username=username)
         else:
-            posts = Post.objects.all()
+            posts = Post.objects.select_related('author').all()
 
         context = {'latest_posts': posts.filter(publish_date__lte=datetime.now()).order_by('-publish_date')}
 
@@ -31,7 +31,7 @@ class LatestPostsView(View):
 
 class PostDetailView(View):
     def get(self, request, username, pk):
-        post = get_object_or_404(Post, pk=pk, publish_date__lte=datetime.now(), author__username=username)
+        post = get_object_or_404(Post.objects.select_related('author'), pk=pk, publish_date__lte=datetime.now(), author__username=username)
 
         context = {'post': post}
 

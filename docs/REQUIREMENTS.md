@@ -14,7 +14,7 @@
   - publish_datetime
   - categories (1 o más)
 - &#9745;`Category` gestionadas por administrador.
-- &#9744;Mismo diseño de posts en home/blog mostrando title, media (si tiene) e intro.
+- &#9745;Mismo diseño de posts en home/blog mostrando title, media (si tiene) e intro.
 - &#9745;En `/new-post` un formulario para crear un post. Acceden usuarios autenticados. Identificar usuario para publicar POST en su blog.
 - &#9745;En `/login` el usuario hará login.
 - &#9745;En `/logout` el usuario hará logout.
@@ -60,7 +60,7 @@
 
 - &#9744;Añadir filtros post por categorias al admin Django.
 - &#9744;Mostrar mismas columnas en listado que datos de listado API.
-- &#9744;Personalizar página de detalle del post.
+- &#9745;Personalizar página de detalle del post.
 
 ### Webpage
 

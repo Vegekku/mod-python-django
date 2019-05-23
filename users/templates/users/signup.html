@@ -1,25 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'form.html' %}
 
 {% block head_title %}Signup{% endblock %}
 
-{% block body_main %}
-    {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
-    <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <p>
-                {{ field.label_tag }}<br>
-                {{ field }}
-                {% if field.help_text %}
-                    <small>{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                    <p>{{ error }}</p>
-                {% endfor %}
-            </p>
-        {% endfor %}
-        <button type="submit">Signup</button>
-    </form>
-{% endblock %}
+{% block form_button_submit %}Signup{% endblock %}

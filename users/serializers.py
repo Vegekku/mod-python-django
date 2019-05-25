@@ -24,12 +24,14 @@ class UserWriteSerializer(UserSerializer):
     confirm_password = serializers.CharField()
 
     def validate_username(self, value):
-        if User.objects.filter(username=value).exists():
+        self_user = self.instance is not None and self.instance.username != value
+        if self_user and User.objects.filter(username=value).exists():
             raise ValidationError('The username {0} is already used'.format(value))
         return value
 
     def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
+        self_user = self.instance is not None and self.instance.email != value
+        if self_user and User.objects.filter(email=value).exists():
             raise ValidationError('The email {0} is already used'.format(value))
         return value
 
@@ -42,10 +44,13 @@ class UserWriteSerializer(UserSerializer):
 
     def create(self, validated_data):
         user = User()
-        user.first_name = validated_data.get('first_name')
-        user.last_name = validated_data.get('last_name')
-        user.username = validated_data.get('username')
-        user.set_password(validated_data.get('password'))
-        user.email = validated_data.get('email')
-        user.save()
-        return user
+        return self.update(user, validated_data)
+
+    def update(self, instance, validated_data):
+        instance.first_name = validated_data.get('first_name')
+        instance.last_name = validated_data.get('last_name')
+        instance.username = validated_data.get('username')
+        instance.set_password(validated_data.get('password'))
+        instance.email = validated_data.get('email')
+        instance.save()
+        return instance

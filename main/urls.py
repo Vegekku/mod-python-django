@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from posts.views import LatestPostsView, PostDetailView, CreatePostView
+from users.api import UsersAPI, UserAPI
 from users.views import LoginView, LogoutView, SignUpView, ListView
 
 api_path = 'api/v1'
@@ -34,4 +35,8 @@ urlpatterns = [
     # Posts
     path('new-post', CreatePostView.as_view(), name='create_post'),
     path('', LatestPostsView.as_view(), name='home'),
+
+    # API
+    path('{0}/users/<int:pk>'.format(api_path), UserAPI.as_view(), name='user_api'),
+    path('{0}/users'.format(api_path), UsersAPI.as_view(), name='users_api'),
 ]

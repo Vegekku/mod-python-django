@@ -16,6 +16,31 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from posts.api import PostAPI, PostsAPI
+from posts.views import LatestPostsView, PostDetailView, CreatePostView
+from users.api import UsersAPI, UserAPI, BlogsAPI
+from users.views import LoginView, LogoutView, SignUpView, ListView
+
+api_path = 'api/v1'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Users
+    path('login', LoginView.as_view(), name='login'),
+    path('logout', LogoutView.as_view(), name='logout'),
+    path('signup', SignUpView.as_view(), name='signup'),
+    # Blogs
+    path('blogs/<str:username>/<int:pk>', PostDetailView.as_view(), name='post_detail'),
+    path('blogs/<str:username>', LatestPostsView.as_view(), name='user_blog'),
+    path('blogs', ListView.as_view(), name='list_blogs'),
+    # Posts
+    path('new-post', CreatePostView.as_view(), name='create_post'),
+    path('', LatestPostsView.as_view(), name='home'),
+
+    # API
+    path('{0}/blogs'.format(api_path), BlogsAPI.as_view(), name='blogs_api'),
+    path('{0}/users/<int:pk>'.format(api_path), UserAPI.as_view(), name='user_api'),
+    path('{0}/users'.format(api_path), UsersAPI.as_view(), name='users_api'),
+    path('{0}/posts/<int:pk>'.format(api_path), PostAPI.as_view(), name='post_api'),
+    path('{0}/posts'.format(api_path), PostsAPI.as_view(), name='posts_api'),
 ]

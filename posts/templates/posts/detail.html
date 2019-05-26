@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ post.title }}{% endblock %}
+
+{% block body_main %}
+
+    <h2>{{ post.title }}</h2>
+    <p>Publish at {{ post.publish_date }} by <a href="{% url 'user_blog' post.author.username %}">{{ post.author.username }}</a></p>
+    <img src="{{ post.media }}" alt="{{ post.intro }}" title="{{ post.title }}">
+    <p>{{ post.intro }}</p>
+    {% if post.categories %}
+        <ul>
+            {% for category in post.categories.all %}
+                <li>{{ category.title }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

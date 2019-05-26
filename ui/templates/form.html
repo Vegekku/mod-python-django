@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Fill this form{% endblock %}
+
+{% block body_main %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </p>
+        {% endfor %}
+        <button type="submit">{% block form_button_submit %}Submit{% endblock %}</button>
+    </form>
+{% endblock %}

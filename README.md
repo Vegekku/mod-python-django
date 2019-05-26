@@ -2,6 +2,25 @@
 
 Practice for Python-Django Module of VI Bootcamp Web
 
+## INSTALLATION
+
+1. Install required modules
+    ```bash
+    $ pip install -r requirements.txt
+    ```
+2. Create database
+    ```bash
+    $ python manage.py migrate
+    ```
+3. Create superuser
+    ```bash
+    $ python manage.py createsuperuser
+    ```
+4. Run dev server
+    ```bash
+    $ python manage.py runserver
+    ```
+
 ## WEBSITE
 
 ```
@@ -27,23 +46,31 @@ Practice for Python-Django Module of VI Bootcamp Web
 
 ```
 # USERS
-POST /api/v1/users Any user
-GET /api/v1/users/<pk> Authenticated user (self or super)
-PUT /api/v1/users/<pk> Authenticated user (self or super)
-DELETE /api/v1/users/<pk> Authenticated user (self or super)
+POST /api/v1/users          Any user
+GET /api/v1/users/<pk>      Authenticated user (self or super)
+PUT /api/v1/users/<pk>      Authenticated user (self or super)
+DELETE /api/v1/users/<pk>   Authenticated user (self or super)
 
 # BLOGS
-GET /api/v1/blogs Any user
+GET /api/v1/blogs   Any user.
+                    Allowed query params search or/and ordering by username.
 
 # POSTS
-GET /api/v1/posts Published posts for any user, all posts for authenticated user (author or super)
-POST /api/v1/posts Authenticated user
-GET /api/v1/posts/<pk> Published post for any user, any post for authenticated user (author or super)
-PUT /api/v1/posts/<pk> Authenticated user (author or super)
-DELETE /api/v1/posts/<pk> Authenticated user (author or super)
+GET /api/v1/posts           Published posts for any user, all posts for authenticated user (author or super)
+                            Query param search by title or body.
+                            Query param ordering by title or publish_date
+POST /api/v1/posts          Authenticated user
+GET /api/v1/posts/<pk>      Published post for any user, any post for authenticated user (author or super)
+PUT /api/v1/posts/<pk>      Authenticated user (author or super)
+DELETE /api/v1/posts/<pk>   Authenticated user (author or super)
 ```
 
 ## CHANGELOG
+
+### 1.1
+
+- Improved README.
+- Added basic design to website.
 
 ### 1.0
 
@@ -51,6 +78,7 @@ DELETE /api/v1/posts/<pk> Authenticated user (author or super)
 
 ## FUTURE FEATURES
 
+- Make a table of available urls and endpoints on README.
 - Change to Model Views
 - List posts depend on url parameters (latest, oldest, list)
 - Refactor categories as an internal model of posts, if it's possible.

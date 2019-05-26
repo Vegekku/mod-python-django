@@ -3,12 +3,14 @@
 {% block head_title %}Blogs{% endblock %}
 
 {% block body_main %}
-    {% for user in users %}
-        <a href="{% url 'user_blog' user.username %}">
-            <div>
-                <h2>{{ user.username }}</h2>
-                <p>Blogging since {{ user.date_joined }}</p>
-            </div>
-        </a>
-    {% endfor %}
+    <div class="container">
+        {% for user in users %}
+            <a href="{% url 'user_blog' user.username %}" class="item">
+                <div>
+                    <h2>{{ user.username }}</h2>
+                    <p>Blogging since {{ user.date_joined }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}

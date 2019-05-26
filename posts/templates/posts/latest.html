@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
 {% block body_main %}
-    {% for post in latest_posts %}
-        <div>
-            <a href="{% url 'post_detail' post.author.username post.pk %}">
-                <h2>{{ post.title }}</h2>
-            </a>
-            <small>
-                Published at {{ post.publish_date }} by
-                <a href="{% url 'user_blog' post.author.username %}">{{ post.author.username }}</a>
-            </small>
-            <hr>
-            <img src="{{ post.media }}" alt="{{ post.intro }}" title="{{ post.title }}">
-            <p>{{ post.intro }}</p>
-        </div>
-    {% endfor %}
+    <div class="container">
+        {% for post in latest_posts %}
+            <div class="item">
+                <a href="{% url 'post_detail' post.author.username post.pk %}">
+                    <h2>{{ post.title }}</h2>
+                </a>
+                <small>
+                    Published at {{ post.publish_date }} by
+                    <a href="{% url 'user_blog' post.author.username %}">{{ post.author.username }}</a>
+                </small>
+                <hr>
+                <img src="{{ post.media }}" alt="{{ post.intro }}" title="{{ post.title }}">
+                <p>{{ post.intro }}</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

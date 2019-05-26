@@ -30,9 +30,9 @@
 ### API de usuarios
 
 - &#9745;Endpoint de registro con los mismos campos que el formulario de registro.
-- &#9744;Endpoint de detalle de usuario, visible para él mismo o administrador.
-- &#9744;Endpoint de edición de usuario, usable para él mismo o administrador.
-- &#9744;Endpoint de borrado de usuario, usable para él mismo o administrador.
+- &#9745;Endpoint de detalle de usuario, visible para él mismo o administrador.
+- &#9745;Endpoint de edición de usuario, usable para él mismo o administrador.
+- &#9745;Endpoint de borrado de usuario, usable para él mismo o administrador.
 
 ### API de blogs
 

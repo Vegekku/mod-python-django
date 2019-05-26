@@ -43,16 +43,16 @@
 ### API de posts
 
 - &#9744;Endpoint de listado de posts de un blog.
-  - &#9744;User no autenticado: solo posts publicados.
-  - &#9744;User owner o admin: todos los posts.
-  - &#9744;Mostrar title, media, intro y publish_datetime.
+  - &#9745;User no autenticado: solo posts publicados.
+  - &#9745;User owner o admin: todos los posts.
+  - &#9745;Mostrar title, media, intro y publish_datetime.
   - &#9744;Búsqueda por title o body.
   - &#9744;Ordenar por title o publish_datetime (default descendente).
-- &#9744;Endpoint de creación de post para user autenticado, al cual queda vinculado el nuevo post.
-- &#9744;Endpoint de detalle de post, con toda la info del post.
-  - &#9744;Si private: solo accede owner o admin.
-- &#9744;Endpoint de actualización de post solo para owner o admin.
-- &#9744;Endpoint de borrado de post solo para owner o admin
+- &#9745;Endpoint de creación de post para user autenticado, al cual queda vinculado el nuevo post.
+- &#9745;Endpoint de detalle de post, con toda la info del post.
+  - &#9745;Si no publicado: solo accede owner o admin.
+- &#9745;Endpoint de actualización de post solo para owner o admin.
+- &#9745;Endpoint de borrado de post solo para owner o admin
 
 ## Extras
 

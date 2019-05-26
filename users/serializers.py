@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.urls import reverse
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
@@ -54,3 +55,14 @@ class UserWriteSerializer(UserSerializer):
         instance.email = validated_data.get('email')
         instance.save()
         return instance
+
+
+class BlogSerializer(serializers.Serializer):
+
+    username = serializers.ReadOnlyField()
+    url = serializers.SerializerMethodField()
+
+    def get_url(self, obj):
+        request = self.context.get('request')
+        blog_url = reverse('user_blog', args=[obj.username])
+        return request.build_absolute_uri(blog_url)

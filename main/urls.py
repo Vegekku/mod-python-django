@@ -18,7 +18,7 @@ from django.urls import path
 
 from posts.api import PostAPI, PostsAPI
 from posts.views import LatestPostsView, PostDetailView, CreatePostView
-from users.api import UsersAPI, UserAPI
+from users.api import UsersAPI, UserAPI, BlogsAPI
 from users.views import LoginView, LogoutView, SignUpView, ListView
 
 api_path = 'api/v1'
@@ -38,6 +38,7 @@ urlpatterns = [
     path('', LatestPostsView.as_view(), name='home'),
 
     # API
+    path('{0}/blogs'.format(api_path), BlogsAPI.as_view(), name='blogs_api'),
     path('{0}/users/<int:pk>'.format(api_path), UserAPI.as_view(), name='user_api'),
     path('{0}/users'.format(api_path), UsersAPI.as_view(), name='users_api'),
     path('{0}/posts/<int:pk>'.format(api_path), PostAPI.as_view(), name='post_api'),

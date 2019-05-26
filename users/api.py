@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-from rest_framework import status
+from rest_framework import status, filters
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from users.permissions import UserPermission
-from users.serializers import UserListSerializer, UserSerializer, UserWriteSerializer
+from users.serializers import UserListSerializer, UserSerializer, UserWriteSerializer, BlogSerializer
 
 
 class UsersAPI(APIView):
@@ -54,3 +55,13 @@ class UserAPI(APIView):
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+class BlogsAPI(ListAPIView):
+
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter)
+    search_fields = ('username',)
+    ordering_fields = ('username',)
+    ordering = ('username',)
+
+    queryset = User.objects.all()
+    serializer_class = BlogSerializer

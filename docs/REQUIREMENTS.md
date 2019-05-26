@@ -36,9 +36,9 @@
 
 ### API de blogs
 
-- &#9744;Endpoint de listado de blogs de la plataforma, con su URL.
-  - &#9744;No requiere autenticación.
-  - &#9744;Permite búsqueda de blogs por username y ordenación por username.
+- &#9745;Endpoint de listado de blogs de la plataforma, con su URL.
+  - &#9745;No requiere autenticación.
+  - &#9745;Permite búsqueda de blogs por username y ordenación por username.
 
 ### API de posts
 
